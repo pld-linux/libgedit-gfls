@@ -6,13 +6,13 @@
 Summary:	Gedit file loading and saving library
 Summary(pl.UTF-8):	Biblioteka Gedita do ładowania i zapisywania plików
 Name:		libgedit-gfls
-Version:	0.2.0
+Version:	0.2.1
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 # also https://github.com/gedit-technology/libgedit-gfls/releases
 Source0:	https://download.gnome.org/sources/libgedit-gfls/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	5451b5507e5413eb48c9f4adb8380f2d
+# Source0-md5:	53e127f4273f662329f38118398d197c
 URL:		https://gitlab.gnome.org/World/gedit/libgedit-gfls
 BuildRequires:	glib2-devel >= 1:2.78
 BuildRequires:	gobject-introspection-devel >= 1.42.0
@@ -86,13 +86,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %ninja_install -C build
 
+%find_lang libgedit-gfls-1
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files
+%files -f libgedit-gfls-1.lang
 %defattr(644,root,root,755)
 %doc NEWS README.md
 %attr(755,root,root) %{_libdir}/libgedit-gfls-1.so.0
