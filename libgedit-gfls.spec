@@ -6,13 +6,15 @@
 Summary:	Gedit file loading and saving library
 Summary(pl.UTF-8):	Biblioteka Gedita do ładowania i zapisywania plików
 Name:		libgedit-gfls
-Version:	0.2.1
+Version:	0.3.1
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-# also https://github.com/gedit-technology/libgedit-gfls/releases
-Source0:	https://download.gnome.org/sources/libgedit-gfls/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	53e127f4273f662329f38118398d197c
+#Source0Download: https://gitlab.gnome.org/World/gedit/libgedit-gfls/-/tags
+Source0:	https://gitlab.gnome.org/World/gedit/libgedit-gfls/-/archive/%{version}/%{name}-%{version}.tar.bz2
+# Source0-md5:	56bf5e342e5351a8deb8fc25928d3395
+# older versions:
+#Source0:	https://download.gnome.org/sources/libgedit-gfls/0.2/%{name}-%{version}.tar.xz
 URL:		https://gitlab.gnome.org/World/gedit/libgedit-gfls
 BuildRequires:	glib2-devel >= 1:2.78
 BuildRequires:	gobject-introspection-devel >= 1.42.0
@@ -23,8 +25,6 @@ BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 2.042
-BuildRequires:	tar >= 1:1.22
-BuildRequires:	xz
 Requires:	glib2 >= 1:2.78
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -97,12 +97,12 @@ rm -rf $RPM_BUILD_ROOT
 %files -f libgedit-gfls-1.lang
 %defattr(644,root,root,755)
 %doc NEWS README.md
-%attr(755,root,root) %{_libdir}/libgedit-gfls-1.so.0
+%{_libdir}/libgedit-gfls-1.so.0
 %{_libdir}/girepository-1.0/Gfls-1.typelib
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgedit-gfls-1.so
+%{_libdir}/libgedit-gfls-1.so
 %{_includedir}/libgedit-gfls-1
 %{_datadir}/gir-1.0/Gfls-1.gir
 %{_pkgconfigdir}/libgedit-gfls-1.pc
